@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3 class="text-center mt-5">Archer Class</h3>
+  <div class="row mt-5">
+    <div class="col-md-3 d-flex justify-content-center">
+      <img
+        [src]="'images/class/Archer.webp'"
+        style="height: 500px; object-fit: contain"
+      />
+    </div>
+    <div class="col-md-9 mt-4">
+      <p>
+        Class Archer (クラス・アーチャー, Āchā?), Knight of the Bow and Heroic
+        Spirit of the Bow (弓兵の英霊?), is one of the Three Knight Classes
+        among the seven standard Servant classes summoned for the Holy Grail
+        War.
+      </p>
+      <h5>Qualifications</h5>
+      <hr />
+      <p>
+        Servants placed within this Class excel in possessing powerful Noble
+        Phantasms, are able to act as highly effective scouts...
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <h3 class="text-center">Known Archers</h3>
+
+    @for (servant of archer; track servant.id) {
+    <div
+      class="col-lg-3 col-md-4 mb-3 justify-content-center"
+      style="width: 260px"
+      (click)="goToProductDetails(servant.id)"
+    >
+      <div class="card">
+        <img
+          [src]="
+            'images/class/' + servant.class + '/' + servant.image_url + '.webp'
+          "
+          class="card-img-top"
+          style="height: 300px; object-fit: contain"
+          [alt]="servant.name"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ servant.name }}</h5>
+          <span
+            ><b>{{ servant.class }}</b></span
+          >
+          <p>
+            @for (star of [].constructor(servant.star); track $index) { ⭐ }
+          </p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+<app-footer></app-footer>
